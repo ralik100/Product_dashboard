@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Statystyki</title>
+</head>
+<body>
+<h1>Statystyki</h1>
+
+<div id="stats"></div>
+
+<script>
+async function loadStats() {
+    const res = await fetch('/api/stats');
+    const data = await res.json();
+
+    document.getElementById('stats').innerHTML = `
+        Liczba produktów: ${data.count}<br>
+        Instance ID: ${data.instance}
+    `;
+}
+
+loadStats();
+</script>
+</body>
+</html>
