@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Statystyki</title>
 </head>
 <body>
@@ -14,7 +15,7 @@ async function loadStats() {
     const data = await res.json();
 
     document.getElementById('stats').innerHTML = `
-        Liczba produktów: ${data.count}<br>
+        Liczba produktow: ${data.count}<br>
         Instance ID: ${data.instance}
     `;
 }

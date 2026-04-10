@@ -1,0 +1,25 @@
+docker run -d --name=backend --network=app-network ralik100/backend:latest
+docker run -d --name=frontend --network app-network -p 8080:80 ralik100/frontend:latest
+curl http://localhost:8080/api/items
+curl -i http://localhost:8080/api/stats
+
+
+# backend
+docker build -t ralik100/backend:v1 ./backend
+docker tag ralik100/backend:v1 ralik100/backend:latest
+
+# frontend
+docker build -t ralik100/frontend:v1 ./frontend
+docker tag ralik100/frontend:v1 ralik100/frontend:latest
+
+docker push ralik100/backend:v1
+docker push ralik100/backend:latest
+
+docker push ralik100/frontend:v1
+docker push ralik100/frontend:latest
+
+docker rmi ralik100/backend:v1 ralik100/backend:latest
+docker rmi ralik100/frontend:v1 ralik100/frontend:latest
+
+docker pull ralik100/backend:latest
+docker pull ralik100/frontend:latest
