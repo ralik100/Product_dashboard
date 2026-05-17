@@ -9,6 +9,11 @@ const instanceId = uuidv4();
 
 let items = [];
 
+function my_subtract(a, b)
+{
+    return a - b;
+}
+
 app.get('/items', (req, res) => {
     res.json(items);
 });
@@ -32,3 +37,7 @@ app.get('/stats', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+module.exports = {
+    my_subtract
+}
