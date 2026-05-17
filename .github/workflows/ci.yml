@@ -1,0 +1,32 @@
+name: ci
+run-name: ci
+env:
+  NODE_VERSION: 18
+on:
+  push:
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+    branches:
+      - 'main'
+  pull_request:
+    branches:
+      - 'main'
+jobs:
+  lint:
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      - name: npm ci
+        run: npm ci
+
+      - name: npm lint
+        run: npm lint
