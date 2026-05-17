@@ -30,7 +30,7 @@ jobs:
         run: npm ci
 
       - name: npm lint
-        run: npm lint
+        run: npm run lint
 
 
   test:
@@ -54,7 +54,7 @@ jobs:
       run: npm ci
 
     - name: Tests (Node ${{ matrix.node-version }})
-      run: npm test
+      run: npm run test
 
   build:
     timeout-minutes: 15
