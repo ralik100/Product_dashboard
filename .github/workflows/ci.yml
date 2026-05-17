@@ -58,6 +58,14 @@ jobs:
     - name: Tests (Node ${{ matrix.node-version }})
       run: npm run test
 
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      if: ${{ matrix.node-version }} == 20
+      with:
+        name: tests-results
+        path: ./results
+        retention-days: 10
+
   build:
     timeout-minutes: 15
     runs-on: ubuntu-latest
